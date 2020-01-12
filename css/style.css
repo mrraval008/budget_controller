@@ -236,11 +236,20 @@ ion-icon{
         align-items: center
     }
     .add__type,.add__value,.add__desc{
-        width: 100%;
+        width: 80%;
         height: 38%;
         margin: 10px;
     }
     .budget {
         width: 80%;
+    }
+    .incomeContainer, .expenseContainer {
+        width: 90%;
+        font-size: 70%;
+        margin-bottom: 30px;
+    }
+    .itemContainer{
+        flex-direction: column;
+        
     }
 }
