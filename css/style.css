@@ -225,7 +225,7 @@ ion-icon{
     pointer-events: none;
 }
 .update__btn,.undo__btn{
-    display: none
+    display: none;
 }
 
 @media screen and (max-width:800px) { 
