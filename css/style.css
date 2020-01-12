@@ -1,0 +1,246 @@
+*{
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box
+
+}
+html{
+    background-color: #fff;
+    color: white;
+    font-family: 'Lato', 'Arial', sans-serif;
+    font-weight: 400;
+    font-size: 20px;
+    text-rendering: optimizeLegibility;
+    overflow-x: hidden;
+    letter-spacing: 1px;
+}
+body{
+    height: 100vh;
+}
+
+.flex{
+    display: flex
+}
+
+.upperContainer{
+    background-image: linear-gradient(rgba(0,0,0,0.7),rgba(0,0,0,0.7)), url("../img/budget_img.jpg");
+    height: 60%;
+    background-position: center;
+    background-size: cover;
+    background-attachment: fixed;
+    width: 100%;
+    justify-content: center;
+    text-align: center;
+    align-items: center;
+}
+.budget{
+    width: 25%
+}
+
+.budget__title{
+    font-size: 90%;
+    margin-bottom: 7%;
+}
+.budget__heading{
+    font-size: 180%;
+    margin-bottom: 7%;
+}
+
+.budget__income,.budget__expense{
+    position: relative;
+    margin-bottom: 4%;
+    padding: 3%;
+    font-size: 70%;
+}
+.budget__income{
+    background: #28B9B5;
+}
+.budget__expense{
+    background: #FF5049
+}
+.budget__expense--perc{
+    padding: 1%;
+    background: rgba(255, 255, 255, 0.2);
+    font-size: 80%;
+}
+.budget__buttons--div{
+    position: absolute;
+    right: 1%;
+    width: 40%;
+}
+.budget__income .budget__buttons--div{
+    right: 7%
+}
+.budget__expense--value{
+    padding-right: 8%;
+}
+
+
+
+
+
+.bottomContainer{
+    height: 60vh;
+    color: black
+}
+
+
+
+/* Input Containerr */
+
+.inputContainer{
+    padding: 1%;
+    border-bottom: 1px solid #e7e7e7;
+    background-color: #f7f7f7;
+    justify-content: center;
+    
+}
+.add__type,.add__value,.add__desc{
+    padding: 1%;
+    margin-right: 2%;
+    border: 1px solid #28B9B5;
+    border-radius: 6px;
+    outline: none;
+}
+
+.exp__inputs,.exp__inputs:focus{
+    border: 1px solid #FF5049 !important;
+}
+.add__desc{
+    width: 40%;
+}
+.add__value{
+    width: 10%;
+}
+.btn{
+    background: transparent;
+    border: navajowhite;
+}
+
+.btn:active,.btn:focus{
+    border: none;
+    outline: none
+}
+ion-icon{
+    margin-right: 10px
+}
+.headerBtn{
+    color: #28B9B5;
+}
+.headerBtn ion-icon{
+    font-size: 300%;
+    cursor: pointer
+}
+.red__color{
+    color: #FF5049;
+}
+.headerBtn:hover,.deleteBtn:hover,.editBtn:hover{
+    transform: scale(1.3)
+}
+
+.itemContainer{
+    display: flex;
+    width: 90%;
+    justify-content: space-around;
+    margin: 60px;
+}
+.incomeContainer,.expenseContainer{
+    width: 40%;
+    font-size: 70%;
+}
+
+.item__incomeTitle,.item__expenseTitle{
+    padding: 2%;
+    font-size: 170%;
+    color: #28B9B5;
+}
+
+.add__item{
+    padding: 3%;
+    font-size: 120%;
+    position: relative;
+    display: flex;
+    border-bottom: 1px solid #e7e7e7;
+    align-items: center;
+}
+
+.item__value{
+    transition: 0.4s;
+}
+.add__item:hover .item__value{
+    transform: translateX(-20px)
+}
+.add__item:hover .deleteBtn,.add__item:hover .editBtn {
+    display: inline-block;
+}
+
+.add__item:first-child{
+    border-top: 1px solid #e7e7e7;
+}
+.add__item:nth-child(even){
+    background: #f7f7f7
+}
+.add__item:hover{
+    background: #ecf0f1;
+    cursor: pointer
+}
+
+.incomeItems .btn ,.expenseItems .btn {
+    display: none;
+    cursor: pointer;
+}
+
+.item__valbtn{
+    position: absolute;
+    right: 1%;
+    display: flex;
+    align-items: center;
+    
+}
+.expenseContainer{
+    width: 40%
+}
+.incomeItems .btn  ion-icon,.expenseItems .btn ion-icon{
+    font-size: 140%;
+}
+.incomeItems .btn  ion-icon,.incomeItems .item__value{
+    color:  #28B9B5;
+    
+}
+.expenseItems .btn ion-icon,.item__expenseTitle,.expenseItems .item__value{
+    color: #FF5049;
+}
+
+.item__expense--perc{
+    background: #FF5049;
+    font-size: 80%;
+    padding: 2px 6px;
+    color: white;
+    margin-right: 0px 10px;
+    margin: 0px 10px;
+}
+
+.disabled{
+    opacity: 0.3;
+    pointer-events: none;
+}
+.update__btn,.undo__btn{
+    display: none
+}
+
+@media screen and (max-width:800px) { 
+    .inputContainer{
+        flex-direction: column;
+        justify-content: space-around;
+        height: 78%;
+        align-items: center
+    }
+    .add__type,.add__value,.add__desc{
+        width: 100%;
+        height: 38%;
+        margin: 10px;
+    }
+    .budget {
+        width: 80%;
+    }
+}

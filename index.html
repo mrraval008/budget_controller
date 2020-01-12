@@ -1,0 +1,75 @@
+
+<!doctype html>
+<html>
+  <head>
+      <link rel="stylesheet" type="text/css" href="css/style.css" </link>
+      <link href="https://fonts.googleapis.com/css?family=Open+Sans:100,300,400,600" rel="stylesheet" type="text/css">
+      <link href="https://unpkg.com/ionicons@4.5.10-0/dist/css/ionicons.min.css" rel="stylesheet">
+      <script src="https://unpkg.com/ionicons@4.5.10-0/dist/ionicons.js"></script>
+      <link href='http://fonts.googleapis.com/css?family=Lato:100,300,400,300italic' rel='stylesheet' type='text/css'>
+      
+    <body>
+        <section class="flex upperContainer">
+            <div class="budget">
+                <div class="budget__title">
+                    <span>Available Budget in <span class="budget__date"></span></span>
+                </div>
+                <div class="budget__heading">
+                        <span class="budget__heading__value">0.00</span>
+                </div>
+                <div class="flex budget__income">
+                    <span class="budget__income--text">INCOME</span>
+                    <div class="budget__buttons--div">
+                        <span class="budget__income--value">+ 0</span>
+                    </div>
+                </div>
+                <div class="flex budget__expense">
+                        <span class="budget__expense--text">EXPENSES</span>
+                        <div class="budget__buttons--div">
+                            <span class="budget__expense--value">- 0</span>
+                            <span class="budget__expense--perc">___</span>
+                        </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="bottomContainer">
+                <div class="flex inputContainer">
+                        <select class="add__type">
+                            <option value="inc">INC</option>
+                            <option value="exp">EXP</option>
+                        </select>
+                        <input type="text" class="add__desc" placeholder="Add description" required>
+                        <input type="number" class="add__value" placeholder="Value">
+                        <div class="header__btns">
+                                <button class="btn headerBtn add__btn"><ion-icon name="add-circle-outline" id="addItem"></ion-icon></button>
+                                <button class="btn headerBtn update__btn"><ion-icon name="checkmark-circle-outline"  id="updateItem"></ion-icon></button>
+                                <button class="btn headerBtn undo__btn"><ion-icon name="undo" id="undoItem"></ion-icon></button>
+                        </div>
+                </div>
+                <div class="itemContainer">
+                        <div class="incomeContainer">
+                                <div class="item__incomeTitle">Income</div>
+                                <div class="incomeItems">
+                                         <!-- <div class="add__item">
+                                            <span class="item__desc">acbd</span>
+                                            <div class="item__valbtn">
+                                                    <span class="item__value">20000</span>
+                                                    <button class="btn deleteBtn"><ion-icon name="close-circle-outline"></ion-icon></button>
+                                                    <button class="btn editBtn"><ion-icon name="create"></ion-icon></button>
+                                            </div>
+                                    </div> -->
+                                    <!-- <div class="add__item" id="exp-%ID%"><span class="item__desc">%Desc%</span><div class="item__valbtn"><span class="item__value">%value%</span><span class="item__expense--perc">%itemPerc%</span><button class="btn deleteBtn"><i class="ion-ios-close-outline"></i></button></div></div> -->
+                                </div>
+                        </div>
+                        <div class="expenseContainer">
+                                <div class="item__expenseTitle">Expenses</div>
+                                <div class="expenseItems">
+                                </div>
+                        </div>
+                </div>
+        </section>
+    </body>
+    <script src="js/app.js"></script>
+  </head>
+</html>
