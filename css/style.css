@@ -162,7 +162,20 @@ ion-icon{
     display: flex;
     border-bottom: 1px solid #e7e7e7;
     align-items: center;
+    animation: slide-up 0.5s;
 }
+
+@keyframes slide-up {
+    0%{
+        opacity: 0;
+        transform: translateY(-40px)
+    }
+    100%{
+        opacity: 1;
+        transform: translateY(0px)
+    }
+}
+
 
 .item__value{
     transition: 0.4s;
