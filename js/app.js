@@ -41,6 +41,10 @@ let budgetController = (function () {
         currentUpdatingItem: ""
     }
 
+    let _getAllData = function(){
+        return data;
+    }
+
     let _addItem = function (type, desc, value) {
         let newItem, ID;
         let itemTypes = data.allItems[type];
@@ -54,8 +58,7 @@ let budgetController = (function () {
         } else {
             newItem = new Expense(ID, desc, value);
         }
-
-        itemTypes.push(newItem);
+        data.allItems[type].push(newItem);
         return newItem;
     }
 
@@ -119,7 +122,7 @@ let budgetController = (function () {
         let ID = splittedVal[1];
         let item = _getItem(ID, type)
         item.desc = input.desc;
-        item.value = input.value
+        item.value = input.value;
     }
 
     let _calcPercentages = function(){
@@ -145,7 +148,8 @@ let budgetController = (function () {
         getCurrentUpdatingItem: _getCurrentUpdatingItem,
         resetCurrentUpdatingItem: _resetCurrentUpdatingItem,
         calcPercentages:_calcPercentages,
-        getItemsByType:_getItemsByType
+        getItemsByType:_getItemsByType,
+        getAllData:_getAllData
     }
 
 
@@ -354,8 +358,38 @@ let controller = (function (budgetCtrl, UICtrl) {
         let year = date.getFullYear();
 
         document.querySelector(UICtrl.DOMString.budgetDate).textContent = months[month].toUpperCase() + " " + year;
-
     }
+
+    function updateLocalStorage(){
+        let data  = budgetCtrl.getAllData();
+        this.localStorage.setItem("budgetData",JSON.stringify(data.allItems))
+    }
+
+    function getDataFromLocalStorage(key){
+        return JSON.parse(this.localStorage.getItem(key));
+    }
+
+    function showDataFromLocalStorage(){
+        let data = getDataFromLocalStorage("budgetData");
+        
+        if(data){
+            // Here we get all inc and exp items,
+            for(let key in data){
+                //key will be either inc or exp
+                let items = data[key];
+                items.forEach(item =>{
+                    let input = {
+                        type:key,
+                        desc:item.desc,
+                        value:item.value
+                    }
+                    addItem(input);
+                })
+            }
+        }
+    }
+
+
     function addEventListeners() {
         let DOM = UICtrl.DOMString;
         document.querySelector(DOM.headerButtons).addEventListener("click", onHeaderButtonsClick);
@@ -419,11 +453,23 @@ let controller = (function (budgetCtrl, UICtrl) {
 
     function addItem(input) {
         if (input.desc !== "" && !isNaN(input.value) && input.value > 0) {
-            let newItem = budgetCtrl.addItem(input.type, input.desc, input.value)
+            // Add new item to budget controller
+            let newItem = budgetCtrl.addItem(input.type, input.desc, input.value);
+
+            //Add new item to UI
             UICtrl.addItemToUI(newItem, input.type);
+
+            //Clear input fields
             UICtrl.clearFields();
+
+            //update Budget
             updateBudget();
+
+            //update perce
             calcPerce();
+
+            //update local storage
+            updateLocalStorage();
         } else {
             alert("Please Give Inputs");
         }
@@ -453,6 +499,9 @@ let controller = (function (budgetCtrl, UICtrl) {
 
         // calculate precenatages
         calcPerce();
+
+        //update local storage
+        updateLocalStorage()
     }
 
     function calcPerce(){
@@ -501,6 +550,9 @@ let controller = (function (budgetCtrl, UICtrl) {
 
                 // calculate precenatages
                 calcPerce()
+
+                //update local storage
+                updateLocalStorage()
             } else if (event.target.id == "edit") {
                 //update input with values
                 UICtrl.updateInput(ID, type)
@@ -523,6 +575,7 @@ let controller = (function (budgetCtrl, UICtrl) {
 
     function init() {
         displayMonth();
+        showDataFromLocalStorage();
         addEventListeners();
     }
 
