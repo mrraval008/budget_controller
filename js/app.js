@@ -373,7 +373,6 @@ let controller = (function (budgetCtrl, UICtrl) {
         let data = getDataFromLocalStorage("budgetData");
         
         if(data){
-            let isFromLocalStorage = true;
             // Here we get all inc and exp items,
             for(let key in data){
                 //key will be either inc or exp
@@ -384,7 +383,7 @@ let controller = (function (budgetCtrl, UICtrl) {
                         desc:item.desc,
                         value:item.value
                     }
-                    addItem(input,isFromLocalStorage);
+                    addItem(input);
                 })
             }
         }
@@ -576,7 +575,7 @@ let controller = (function (budgetCtrl, UICtrl) {
 
     function init() {
         displayMonth();
-        showDataFromLocalStorage()
+        showDataFromLocalStorage();
         addEventListeners();
     }
 
